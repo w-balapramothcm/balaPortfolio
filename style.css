@@ -408,26 +408,20 @@ body{
   width: 100%;
   height: 100%;
 }
-.footer-animate {
-    background: linear-gradient(90deg, #0d0dfd, #0046ff, #007bff);
-    background-size: 300% 300%;
-    animation: footerGradient 4s ease infinite;
-    padding: 12px 0;
-    color: white;
-    text-align: center;
-}
-
-@keyframes footerGradient {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
 .footer-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 35px; /* space between text */
+}
+.bordertop{
+    border-top: 1px solid #ffffff;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    opacity: 0.5;
 }
 /* Desktop separator (•) */
 .footer-container p:not(:last-child)::after {
@@ -499,6 +493,7 @@ body{
 .contact-section{
     background: linear-gradient(230deg, rgb(11, 97, 209) 33%, rgb(47, 94, 197)38%, rgb(26, 26, 206) 57%);
     padding: 2rem;
+    padding-bottom: 0;
     padding-top: 4rem;
 }
 .section-img{
@@ -564,7 +559,7 @@ body{
         gap: 6px;
     }
     .footer-container p::after {
-        content: "";
+        content: "" !important;
     }
 }
 @media(max-width:780px){
@@ -617,7 +612,9 @@ body{
         gap: 5px;
     }
     .footer-container p::after {
-        content: "";
+        content: "" !important;
+        .bordertop{
+        margin-bottom: 5%;
     }
 }
 
@@ -697,6 +694,9 @@ body{
         gap: 4px;
     }
     .footer-container p::after {
-        content: "";
+        content: "" !important;
+    }
+    .bordertop{
+        margin-bottom: 5%;
     }
 }
