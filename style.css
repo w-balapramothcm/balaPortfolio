@@ -557,8 +557,8 @@ body{
         left: -13%;
         width: 7%;
     }
-    .timeline-divider.one{
-        height: 73%;
+    .timeline-divider-one{
+        height: 73% !important;
     }
      .footer-container {
         flex-direction: column;
@@ -671,9 +671,9 @@ body{
     }
     .timeline-divider{
         left: 10%;
-        height: 62%;
+        height: 62% !important;
     }
-    .timeline-divider.one{
+    .timeline-divider-one{
         left: 10%;
         height: 67%;
     }
