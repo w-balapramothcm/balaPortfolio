@@ -675,7 +675,7 @@ body{
     }
     .timeline-divider-one{
         left: 10%;
-        height: 67%;
+        height: 67% !important;
     }
     .timeline-box:nth-child(2n+1):after{
         right: 120%;
