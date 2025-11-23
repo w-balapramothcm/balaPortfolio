@@ -1,3 +1,5 @@
+const path = require("path");
+
 // server.js
 const express = require("express");
 const nodemailer = require("nodemailer");
@@ -6,14 +8,19 @@ require("dotenv").config({ path: "./credentails.env" }); // Load credentials.env
 
 const app = express();
 
+app.set('view engine', 'ejs');
+app.set('views', path.resolve(`src`, `views`))
+app.use(express.static('public'));
+
 // Middleware
 app.use(express.json());
 app.use(cors()); // Allow all origins for local testing
+app.use(`/`, (req,res) => res.render("index"));
 
 // POST endpoint to send email
 app.post("/send-email", async (req, res) => {
   const { name, email, subject, message } = req.body;
-
+  console.log("📨 Received email request:", req.body);
   if (!email || !message || !subject) {
     return res.status(400).send("❌ Missing required fields");
   }
@@ -49,5 +56,5 @@ app.post("/send-email", async (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
