@@ -500,16 +500,7 @@ body{
 .section-img{
     color: white;
 }
-.contact-info input{
-    border: none;
-    border-radius: 0%;
-    border-bottom: 2px solid white;
-}
-.contact-info textarea{
-    border: none;
-    border-radius: 0%;
-    border-bottom: 2px solid white;
-}
+
 .contact-info .contact-button{
     text-align: center;
 }
@@ -532,6 +523,50 @@ body{
     padding-bottom: 0px;
     margin-bottom: 0px;
 }
+/* Wrapper */
+.input-group-custom {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+/* Input + Textarea Base Style */
+.input-group-custom input,
+.input-group-custom textarea {
+    width: 100%;
+    background: transparent !important;
+    border: none;
+    border-bottom: 1px solid white;
+    padding: 1rem .5rem .5rem .5rem;
+    font-size: 1rem;
+    color: white !important;
+    outline: none;
+    resize: none;
+}
+
+/* The Floating Label */
+.input-group-custom label {
+    position: absolute;
+    top: 1rem;
+    left: .5rem;
+    color: rgba(255,255,255,0.7);
+    transition: 0.3s ease;
+    pointer-events: none;
+}
+
+/* When active (typed or focused), float label */
+.input-group-custom input:focus + label,
+.input-group-custom input:not(:placeholder-shown) + label,
+.input-group-custom textarea:focus + label,
+.input-group-custom textarea:not(:placeholder-shown) + label {
+    top: -0.4rem;
+    left: 0rem;
+    font-size: 0.85rem;
+    color: #ff5757; /* red color */
+}
+.input-group-custom textarea:not(:placeholder-shown) + label {
+    top: -0.4rem;
+}
+
 @media(max-width:1250px){
     .footer-container{
         font-size: 0.8rem;
