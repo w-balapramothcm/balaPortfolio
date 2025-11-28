@@ -567,6 +567,44 @@ body{
     top: -0.4rem;
 }
 
+#totalExperience,
+#azureExperience,
+#awsExperience {
+    color: #2857a4;
+    font-weight: 700;
+    text-shadow: 0 0 6px #3a7ff0;
+}
+
+/* Scroll to Top Button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #00d4ff, #0084ff) !important;
+  color: #ffffff !important;
+  font-size: 20px;
+  box-shadow: 0px 5px 20px rgba(0, 190, 255, 0.5);
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease-in-out;
+}
+
+.scroll-top-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-top-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0px 5px 25px rgba(0, 190, 255, 0.9) !important;
+}
+
 @media(max-width:1250px){
     .footer-container{
         font-size: 0.8rem;
@@ -753,5 +791,12 @@ body{
     .lastfootp{
         position: relative; 
         left: -10px !important;
+    }
+     .scroll-top-btn{
+        bottom: 18px;
+        left: 18px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
 }
