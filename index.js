@@ -164,3 +164,13 @@ scrollTopBtn.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+document.querySelectorAll('#navlist .nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const navCollapse = document.getElementById('navlist');
+    const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+
+    if (bsCollapse) {
+      bsCollapse.hide();
+    }
+  });
+});
