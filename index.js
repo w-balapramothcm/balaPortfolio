@@ -63,84 +63,104 @@ document.querySelectorAll('.input-group-custom input, .input-group-custom textar
     }
   });
 });
-// === Experience Auto-Calculation + Animation === //
+// === Experience Auto-Calculation (HR-Accurate) === //
 function calculateExperience(start, end) {
-  const diffMs = end - start;
-  const diffDays = diffMs / (1000 * 60 * 60 * 24);
-  const years = Math.floor(diffDays / 365.25);
-  const months = Math.floor((diffDays % 365.25) / 30.44);
+  let years = end.getFullYear() - start.getFullYear();
+  let months = end.getMonth() - start.getMonth();
+
+  // If the current day is before the start day, the month is not completed
+  if (end.getDate() < start.getDate()) {
+    months--;
+  }
+
+  // Adjust if months become negative
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
   return { years, months };
 }
 
-function animateValue(element, start, end, duration) {
+// === Animate Experience (Month-based animation) === //
+function animateValue(element, startMonths, endMonths, duration) {
   let startTime = null;
-  
+
   function step(timestamp) {
     if (!startTime) startTime = timestamp;
     const progress = Math.min((timestamp - startTime) / duration, 1);
-    const value = start + (end - start) * progress;
-    
-    // Split decimal to years + months visually
-    const years = Math.floor(value);
-    const months = Math.floor((value - years) * 12);
-    
+
+    const currentMonths = Math.floor(
+      startMonths + (endMonths - startMonths) * progress
+    );
+
+    const years = Math.floor(currentMonths / 12);
+    const months = currentMonths % 12;
+
     element.textContent = `${years}.${months} yrs`;
-    
-    if (progress < 1) requestAnimationFrame(step);
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
   }
-  
+
   requestAnimationFrame(step);
 }
 
+// === Update Experience UI === //
 function updateExperienceUI() {
   const today = new Date();
 
-  const azureStart = new Date("2022-07-14");
+  // Career timeline
+  const careerStart = new Date("2022-07-14");
   const azureEnd = new Date("2024-07-14");
+  const awsStart = azureEnd;
 
-  const awsStart = new Date("2024-07-14");
-
-  // Calculate all
-  const total = calculateExperience(azureStart, today);
-  const azure = calculateExperience(azureStart, azureEnd);
+  // Calculate experience
+  const total = calculateExperience(careerStart, today);
+  const azure = calculateExperience(careerStart, azureEnd);
   const aws = calculateExperience(awsStart, today);
 
+  // Animate values (convert to months)
   animateValue(
     document.getElementById("totalExperience"),
     0,
-    total.years + total.months / 12,
+    total.years * 12 + total.months,
     1800
   );
+
   animateValue(
     document.getElementById("azureExperience"),
     0,
-    azure.years + azure.months / 12,
+    azure.years * 12 + azure.months,
     1800
   );
+
   animateValue(
     document.getElementById("awsExperience"),
     0,
-    aws.years + aws.months / 12,
+    aws.years * 12 + aws.months,
     1800
   );
 }
 
+// Run after page load
 document.addEventListener("DOMContentLoaded", updateExperienceUI);
 
 // === Scroll To Top Button === //
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 
 window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-        scrollTopBtn.classList.add("show");
-    } else {
-        scrollTopBtn.classList.remove("show");
-    }
+  if (window.scrollY > 300) {
+    scrollTopBtn.classList.add("show");
+  } else {
+    scrollTopBtn.classList.remove("show");
+  }
 });
 
 scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 });
