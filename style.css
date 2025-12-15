@@ -680,6 +680,31 @@ html {
     }
 }
 /* ===== Desktop timeline dots (perfect circles) ===== */
+@media(max-width:1024px) {
+  .timeline-box:nth-child(2n+1):after{
+        right: -13.5%;
+        width: 7%;
+    }
+    .timeline-box:nth-child(2n):after{
+        left: -12%;
+        width: 7%;
+    }
+    .timeline-divider{
+        height: 60%;
+    }
+    .timeline-box.one:nth-child(2n+1):after{
+        right: -13.5%;
+        width: 7%;
+    }
+    .timeline-box.one:nth-child(2n):after{
+        left: -12%;
+        width: 7%;
+    }
+    .timeline-divider-one{
+        height: 68% !important;
+    }
+}
+
 @media (min-width: 991px) {
   .timeline-box::after,
   .timeline-box.one::after {
@@ -692,6 +717,10 @@ html {
 }
 
 @media(max-width:990px){
+    .timeline-box::after,
+    .timeline-box.one::after {
+        box-shadow: 0 0 0 3px rgba(0,150,250,0.15);
+    }
     .timeline-box:nth-child(2n+1):after{
         right: -14%;
         width: 7%;
@@ -727,6 +756,10 @@ html {
     }
 }
 @media(max-width:780px){
+    .timeline-box::after,
+    .timeline-box.one::after {
+        box-shadow: 0 0 0 3px rgba(0,150,250,0.15);
+    }
     .timeline-box{
         left: 23%;
         width: 70%;
@@ -740,14 +773,15 @@ html {
         height: 60% !important;
     }
     .timeline-box:nth-child(2n+1):after{
-        right: 119.5%;
+        right: 120%;
         width: 5%;
         height: 25px;
     }
     .timeline-box:nth-child(2n):after{
-        left: -24.5%;
+        left: -25%;
         width: 5%;
         height: 25px;
+        border-radius: 20px;
     }
     .timeline-box.one{
         left: 23%;
@@ -759,7 +793,7 @@ html {
     }
     .timeline-divider-one{
         left: 10%;
-        height: 65%;
+        height: 65% !important;
     }
     .timeline-box.one:nth-child(2n+1):after{
         right: 119.5%;
@@ -770,6 +804,7 @@ html {
         left: -24.5%;
         width: 5%;
         height: 25px;
+        border-radius: 20px;
     }
     .footer-container {
         flex-direction: column;
@@ -787,6 +822,10 @@ html {
 }
 
 @media(max-width:560px){
+    .timeline-box::after,
+    .timeline-box.one::after {
+        box-shadow: 0 0 0 3px rgba(0,150,250,0.15);
+    }
     .name-title h1{
         font-size: 2.5rem;
         margin-bottom: 2rem;
@@ -800,6 +839,9 @@ html {
     .profile-img{
         width: 50%;
         margin-top: -25%;
+    }
+    .about-section{
+        padding: 0;
     }
     .about-text p{
         margin-top: 4.5rem;
@@ -825,18 +867,18 @@ html {
     }
     .timeline-divider{
         left: 10%;
-        height: 1250px !important;
+        height: 1300px !important;
     }
     .timeline-divider-one{
         left: 10%;
         height: 67% !important;
     }
     .timeline-box:nth-child(2n+1):after{
-        right: 325px;
+        right: 320px;
         width: 9%;
     }
     .timeline-box:nth-child(2n):after{
-        left: -80px;
+        left: -78px;
         width: 9%
     }
     .timeline-box.one:nth-child(2n+1):after{
@@ -844,7 +886,7 @@ html {
         width: 9%;
     }
     .timeline-box.one:nth-child(2n):after{
-        left: -29%;
+        left: -29% !important;
         width: 9%;
     }
     .address-info{
@@ -871,7 +913,7 @@ html {
     }
     .lastfootp{
         position: relative; 
-        left: -10px !important;
+        left: 3px !important;
     }
      .scroll-top-btn{
         bottom: 40px;
